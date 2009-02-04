@@ -1,0 +1,4 @@
+Зарегистрировать нового пользователя со своим именем используя стандартную форму
+
+Запустить script/console и выполнить:
+User.find_by_uname("megauser").update_attributes(:perms => "admin")
