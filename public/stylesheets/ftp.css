@@ -1,0 +1,487 @@
+/* Страница редактирования пользователя */
+.user_edit_form {
+	overflow: hidden;
+}
+
+.user_edit_form .descs {
+	float: left;
+	width: 20%;
+	text-align:right;
+}
+
+.user_edit_form .fields {
+	float: left;
+	text-align: left;
+	padding-left: 20px;
+}
+
+/* Страница просмотра пользователя */
+.user_view {
+	overflow: hidden;
+}
+
+.user_view .photo {
+	float: left;
+	padding-left: 10px;
+	width: 20%;
+}
+
+.user_view .info {
+	float: left;
+}
+
+/* Страница регистрации */
+.register_form {
+	padding-top: 40px;
+	overflow: hidden;
+}
+
+.register_form .descs {
+	float: left;
+	width: 50%;
+	text-align:right;
+}
+
+.register_form .fields {
+	float: left;
+	text-align: left;
+	padding-left: 20px;
+}
+
+/* Страница логина */
+.login_form {
+	padding-top: 40px;
+	overflow: hidden;
+}
+
+.login_form .descs {
+	float: left;
+	width: 50%;
+	text-align:right;
+}
+
+.login_form .fields {
+	float: left;
+	text-align: left;
+	padding-left: 20px;
+}
+
+/* Добавление нового фильма */
+.add_film_form {
+	padding-top: 20px;
+	overflow: hidden;
+}
+
+.add_film_form .descs {
+	float: left;
+	width: 20%;
+	text-align:right;
+}
+
+.add_film_form .fields {
+	float: left;
+	width: 76%;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.add_film_form .select {
+	height: 100px;
+}
+
+#store {
+    background: #99cc99;
+    margin: 0;
+    padding: 0;
+}
+
+#side {
+    float: left;
+    width: 28%;
+    padding: 10px;
+/*     border: solid blue 1px; */
+}
+
+#side a {
+    display: block;
+}
+
+#main {
+    background: #aaaaDF;
+    width: 68%;
+    float: right;
+    padding: 10px;
+/*     border: solid red 1px; */
+}
+
+#notice {
+    border: 2px solid red;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #f0f0f0;
+    font: bold smaller sans-serif;
+}
+
+body {
+    color: #333;
+    font-size:14px;
+    width: 1000px;
+    max-width: 65em;
+    margin: 0 auto;
+}
+
+#header {
+    height: 90px;
+    background: #117755;
+    color: white;
+}
+
+#header a {
+    color: white;
+}
+
+#footer {
+    height: 80px;
+    background: #117755;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+
+}
+
+#footer p {
+    color: white;
+}
+
+#page {
+/*     border: solid red 1px; */
+    margin: 0 auto;
+/*     width: 80%; */
+    overflow: hidden;
+/*     position: relative; */
+}
+/*
+#user_photo {
+    border: solid blue 0px;
+    float: left;
+    padding: 10px;
+    padding-left: 50px;
+    width: 150px;
+}
+*/
+#user_description_left {
+    border: solid blue 0px;
+    width: 150px;
+    float: right;
+    text-align:right;
+}
+
+#user_description_right {
+    border: solid green 0px;
+    width: 200px;
+    float: right;
+}
+
+.film_photo {
+/*     border: solid blue 1px; */
+    padding-left:10%;
+    width: 19%;
+    float: left;
+/*     text-align:center; */
+}
+
+.film_meta {
+/*     margin-left: 30%; */
+/*     border: solid black 1px; */
+}
+
+.film_meta li {
+/*    vertical-align: center; */
+    height: 30px;
+    padding-right: 10px;
+/*     border:solid black 1px; */
+}
+
+.film_meta li.big {
+    height:100px;
+}
+
+#EntityLink, #EntityTitle {
+    width: 300px;
+}
+
+.film_meta .data_description {
+    float:left;
+    width: 300px;
+    text-align: right;
+/*     border: solid red 1px; */
+}
+
+.film_meta .data {
+/*     margin-left: 40%; */
+/*     border: solid red 1px; */
+}
+
+.film_meta .description {
+    margin-left: 40%;
+}
+
+.film_submit {
+    width:100%;
+    float:left;
+    text-align:center;
+    margin-top:20px;
+}
+
+.register {
+    height: 300px;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.register .description {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+.register .data {
+    margin-left: 50%;
+    text-align: left;
+/*     border: solid red 1px; */
+}
+
+
+.entity {
+    overflow: hidden;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.entity .photo {
+    width: 200px;
+    float:left;
+}
+
+.entity .meta {
+/*     float:right; */
+    position: relative;
+/*     border: solid red 1px; */
+    margin-left: 210px;
+/*     height: 300px; */
+}
+
+
+h2 {
+    text-align:center;
+    font-size: 200%;
+    font-weight:normal;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+#page_down {
+    padding-top:30px;
+    border: solid red 0px;
+    width: 100%;
+    float: right;;
+}
+
+
+#user_submit {
+    float: right;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.user {
+/*     border: solid red 1px; */
+/*     font-size: 120%; */
+    padding-left: 15px;
+    margin-top: 10px;
+    background: url(../img/user_g.png) left top no-repeat;
+    font-weight: bold;
+}
+
+.adder {
+    padding-top: 10px;
+}
+
+.download {
+/*     border: solid red 1px; */
+    font-weight: bold;
+    padding-left: 50px;
+    padding-top: 10px;
+    height: 40px;
+/*    vertical-align: center;*/
+    background: url(../img/down_g.png) left top no-repeat;
+/*     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/down.png', sizingMethod=''); */
+}
+
+.moderator_menu {
+    border-bottom: solid gray 1px;
+/*     padding-top: 20px; */
+    font-weight: bold;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.moderator_menu p {
+    margin:0;
+    text-align: center;
+/*     color: blue; */
+}
+
+.add_entity {
+    font-weight: bold;
+    height: 40px;
+	width: 200px;
+	float:left;
+    margin-top: 5px;
+    padding-left: 50px;
+    padding-top: 15px;
+    margin-left: 100px;
+    background: url(../img/aktion4_g.png) left top no-repeat;
+}
+
+.meta .title {
+    display: inline;
+    font-weight: bold;
+    width: 400px;
+/*     border: solid red 1px; */
+/*     padding-bottom: 50px; */
+}
+
+.meta .modify {
+    display: inline;
+/*     font-weight: bold; */
+/*     width: 400px; */
+    margin-left: auto;
+/*     border: solid green 1px; */
+/*     margin-right: 100px; */
+}
+
+#event_photo {
+/*     border: solid red 1px; */
+    float: left;
+}
+
+#event_description_left {
+/*     border: solid blue 1px; */
+    width: 150px;
+    float: right;
+    text-align:right;
+}
+
+#event_description_right {
+/*     border: solid green 1px; */
+    width: 150px;
+    float: right;
+}
+
+
+
+#comments {
+/*     border: solid red 1px; */
+    padding-top:20px;
+/*     margin-right:140px; */
+    padding-bottom: 50px;
+    margin: 0 auto;
+/*     float: right; */
+}
+
+#comment_add textarea{
+/*     width: 100%; */
+/*     border: solid gray 1px; */
+}
+
+#centered_block {
+/*     margin: 0 auto; */
+    height: 500px;
+    text-align: center;
+    border: solid green 1px;
+}
+
+.comment {
+    padding: 5px 0;
+    width: 500px;
+    margin-bottom: 5px;
+	border: solid #aaccaa 1px;
+}
+
+.comment p {
+    padding-top:5px;
+    font-size:x-small;
+}
+
+.navigator {
+    font-size: 200%;
+    margin-left: 210px;
+/*     border: solid red 1px; */
+}
+
+.navigator a {
+    color: #117755;
+}
+
+.navigator .arrow {
+    color: #117755;
+}
+
+.notice {
+    margin-left: 40%;
+    color: green;
+}
+
+li {
+    height: 30px;
+}
+
+input, textarea, select, option{
+    border: solid gray 1px;
+/*     width: 300px; */
+/*     margin: 3px 0; */
+}
+
+.users td {
+    padding-left: 5px;
+}
+
+.search {
+/*   border: solid red 1px;*/
+/*   position:relative; */
+/*  margin-top: 40px; */
+  text-align: right;
+  display: inline;
+/*   float: left; */
+/*   width:100%; */
+}
+
+.sort {
+/*   border: solid green 1px; */
+/*   display:block; */
+  float: left;
+}
+
+.logged_as {
+  text-align:right;
+}
+
+.moder_options {
+  border: solid #aaccaa 2px;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.admin_options {
+  border: solid #aaccaa 2px;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.show_new {
+/*   border: dashed brown 2px; */
+}

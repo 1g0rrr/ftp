@@ -1,0 +1,36 @@
+<h2>Редактирование пользователя</h2>
+<div class="user_edit_form">
+  <%= error_messages_for 'user' %>
+	<div class="descs">
+		<ul>
+			<li>Ваш ник</li>
+			<li>Новый пароль</li>
+			<li>Подтверждение пароля</li>
+			<li>Новая фотка/аватар</li>
+			<li>Настоящее имя</li>
+			<li>Фамилия</li>
+			<li>Пол</li>
+			<li>icq</li>
+			<li>e-mail</li>
+			<li>О себе</li>
+		</ul>
+	</div>
+	<div class="fields">
+		<ul>
+	    <% form_for :user, :html => { :multipart => true} do |form| %>
+		  <li><%= form.text_field :uname, :size => 20 %></li>
+	      <li><%= form.password_field :password, :size => 20 %></li>
+	      <li><%= form.password_field :password_confirmation, :size => 20 %></li>
+	      <li><%= form.file_field :photo, :size => 20 %></li>
+	      <li><%= form.text_field :real_name, :size => 20 %></li>
+		  <li><%= form.text_field :second_name, :size => 20 %></li>
+		  <li><%= form.select :sex,[['Выберите пол'], ['Мужской', 'male'], ['Женский', 'female']] %></li>
+		  <li><%= form.text_field :icq, :size => 20 %></li>
+		  <li><%= form.text_field :email, :size => 20 %></li>
+          <%= form.text_area :about %><br />
+          <%= submit_tag "Сохранить", :class => "submit" %>
+	    <% end %>
+		</ul>
+
+	</div>
+</div>

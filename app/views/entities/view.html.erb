@@ -1,0 +1,60 @@
+<div class="search">
+  <% form_for :user, :url => {:controller => 'entities', :action => 'search'} do %>
+        <%= text_field_tag :word, params[:word] %>
+        <%= submit_tag "Поиск", :class => 'submit' %>
+  <% end %>
+</div>
+ <div class="entity">
+    <div class="photo">
+  	  <% if @ent[:photo] != '' %>
+        <img src="/uploads/entities/<%=@ent[:id]%>/ent<%=@ent[:id]%>_w200.jpg">
+	  <% else %>
+	  	  <img src="/images/no_image.png">
+	  <% end %>
+    </div>
+    <div class="meta">
+        <h3 class="title"><%= link_to(h(@ent.title), :controller => 'entities', :action => 'view', :id => @ent.id) %></h3>
+        <% if @is_moder -%>
+          <div class="modify">
+              <%= link_to '[ удалить ]', :action => 'del', :id => @ent.id %>
+              <%= link_to '[ ред-ть ]', :action => 'edit', :id => @ent.id %>
+              <%= link_to '[ просмотр ]', :action => 'view', :id => @ent.id %>
+          </div>
+		  <% end -%>
+          <h4>Жанр: <%= @ent.get_category %></h4>
+          <div class="download"><a href="<%= FILMS_STORAGE_URL + "/" + @ent.category.to_s + "/" + @ent.file_name.to_s %>">Скачать</a></div>
+             <%= h(@ent.description).gsub(/\n/, '<br />') %>
+          <div class="adder">
+          Добавил: 
+		  <% if @ent.user %>
+		  <span class="user"><%= link_to(@ent.user[:uname], :controller => 'users', :action => 'view', :id => @ent.user[:id]) %></span> <%=@ent.created_at.to_s(:long) %>
+          <% else %>
+		  <span class="user">DELETED</span>
+		  <% end %>
+		  <br />
+		  Комментариев: <%= @ent.comments.count %><br>
+          </div>
+		  <br />
+		  <h3>Комментарии:</h3>
+      <% for comment in @ent.comments %>
+		<div class="comment">
+		  <span class="user"><%= comment.user[:uname] %> </span><%= comment.created_at.to_s(:short) %>:<br>
+		  <%= h comment.text %>
+		</div>
+		<% end %>
+		<br>
+		<% if session[:user] %>
+			<h3>Написать</h3>
+			<% form_for :comment, :url => { :action => :add_comment} do |form| %>
+			    <%= form.text_area :text, :cols => 80, :rows => 5 %>
+			    <%= form.hidden_field :user_id, :value => session[:user].id %>
+			    <%= form.hidden_field :entity_id, :value => @ent.id %><br>
+			    <%= submit_tag "Добавить", :class => "submit" %>
+			<% end %>
+		<% end %>
+	  </div>
+	  
+  </div>
+ 
+
+

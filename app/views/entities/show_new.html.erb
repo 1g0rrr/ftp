@@ -1,0 +1,26 @@
+<div class="show_new">
+<div class="add_entity"><%= link_to 'добавить фильм', :controller => 'entities', :action => 'add' %><br /></div>
+<div class="search">
+  <% form_for :user, :url => {:controller => 'entities', :action => 'search'} do %>
+  <!--      <label for="user_uname">Поиск:</label> -->
+        <%= text_field_tag :word, params[:word] %>
+        <%= submit_tag "Поиск", :class => 'submit' %>
+  <% end %>
+</div>
+<br>
+
+<%= show_entities @entities, :show_new => true %>
+
+<% if @entities.empty? %>
+  <h1>Тут ничего нет</h1>
+<% end %>
+<div class="navigator">
+  <%= @next_page ? link_to('|&larr;', :action => 'show_new') : '' %>
+  <%= @dnext_page ? link_to(@dnext_page, :action => 'show_new', :page => @dnext_page) : '' %>
+  <%= @next_page ? link_to(@next_page, :action => 'show_new', :page => @next_page) : '' %>
+  <%= @cur_page %>
+  <%= @prev_page ? link_to(@prev_page, :action => 'show_new', :page => @prev_page) : '' %>
+  <%= @dprev_page ? link_to(@dprev_page, :action => 'show_new', :page => @dprev_page) : '' %>
+  <%= @prev_page ? link_to('&rarr;|', :action => 'show_new', :page => 1) : '' %>
+</div>
+</div>

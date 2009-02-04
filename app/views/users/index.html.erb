@@ -1,0 +1,22 @@
+<h1>Список пользователей</h1>
+<ul>
+<% for user in @users %>
+<li>
+  <%= user.uname %> id:<%= user.id %>
+  <%= link_to '[ view ]', :action => 'view', :id => user %>
+  <%= link_to '[ edit ]', :action => 'edit', :id => user %>
+  <%= link_to '[ del ]', :action => 'del' , :id => user %>
+</li>
+<% end %>
+</ul>
+<div class="navigator">
+  <%= @next_page ? link_to('|&larr;', :action => 'index') : '' %>
+  <%= @dnext_page ? link_to(@dnext_page, :action => 'index', :page => @dnext_page) : '' %>
+  <%= @next_page ? link_to(@next_page, :action => 'index', :page => @next_page) : '' %>
+  <%= @cur_page %>
+  <%= @prev_page ? link_to(@prev_page, :action => 'index', :page => @prev_page) : '' %>
+  <%= @dprev_page ? link_to(@dprev_page, :action => 'index', :page => @dprev_page) : '' %>
+  <%= @prev_page ? link_to('&rarr;|', :action => 'index', :page => 1) : '' %>
+</div>
+<br />
+

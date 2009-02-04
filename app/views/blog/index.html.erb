@@ -1,0 +1,16 @@
+<h1>Блог разработчика</h1>
+
+<% if @posts.empty? %>
+  <h2>Тут пока пусто.</h2> <h2> Зайдите как администратор, чтобы добавить новую запись.</h2>
+<% end %>
+
+<% for post in @posts %>
+  <br /><br />
+  <h3><%= post.title %></h3>
+  <%= post.text %><br>
+  <%= link_to "Комментариев: " + post.dev_blog_comments.count.to_s, :action => :view, :id => post.id %>
+<% end %>
+
+<div class="navigator">
+<!-- Тут будет постраничная навигация -->
+</div>

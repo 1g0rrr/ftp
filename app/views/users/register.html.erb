@@ -1,0 +1,25 @@
+<h2>Для регистрации заполните простую форму</h2>
+<div class="register_form">
+  <%= error_messages_for 'user' %>
+	<div class="descs">
+		<ul>
+			<li>Ваш ник</li>
+			<li>Пароль</li>
+			<li>Подтверждение пароля</li>
+			<li>Фотка/аватар</li>
+			<li>Пол</li>
+		</ul>
+	</div>
+	<div class="fields">
+		<ul>
+	    <% form_for :user, :html => { :multipart => true} do |form| %>
+		  <li><%= form.text_field :uname, :size => 20 %></li>
+	      <li><%= form.password_field :password, :size => 20 %></li>
+	      <li><%= form.password_field :password_confirmation, :size => 20 %></li>
+	      <li><%= form.file_field :photo, :size => 20 %></li>
+	      <li><%= form.select :sex,[['Выберите пол'], ['Мужской', 'male'], ['Женский', 'female']] %></li>
+	    <%= submit_tag "Добавить", :class => "submit" %>
+	    <% end %>
+		</ul>
+	</div>
+</div>

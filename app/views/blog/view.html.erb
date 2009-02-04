@@ -1,0 +1,21 @@
+<h1>Просмотр записи</h1>
+<br />
+<h3><%= @post.title %></h3>
+<%= @post.text %>
+<h3>Комментарии:</h3>
+<% for comment in @post.dev_blog_comments %>
+<div class="comment">
+  <span class="user"><%= comment.user[:uname] %> </span><%= comment.created_at.to_s(:short) %>:<br>
+  <%=comment.text %><br>
+</div>
+<% end %>
+<br>
+
+<% if session[:user] %>
+	<% form_for :comment, :url => { :action => :add_comment} do |form| %>
+	    <%= form.text_area :text, :cols => 80, :rows => 5 %>
+	    <%= form.hidden_field :user_id, :value => session[:user].id %>
+	    <%= form.hidden_field :dev_blog_post_id, :value => @post.id %><br>
+	    <%= submit_tag "Добавить", :class => "submit" %>
+	<% end %>
+<% end %>

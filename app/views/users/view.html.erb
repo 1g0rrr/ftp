@@ -1,0 +1,21 @@
+<div class="user_view">
+    <h2>Данные пользователя</h2>
+	<%= error_messages_for 'user' %>
+	<div class="photo">
+		  <% if @user[:photo] != '' %>
+	          <img src="/uploads/users/<%=@user.id%>/user<%=@user.id%>_w100.jpg?<%= rand(999999) %>"/>
+		  <% else %>
+		  	  <img src="/images/no_image.png">
+		  <% end %>
+	</div>
+	<div class="info">
+	    <p>Ник на сайте: <%=@user.uname%> <%= link_to '[ редактировать ]', :controller => "users", :action => "edit", :id => @user.id %></p>
+	    <p>Имя: <%=@user.real_name%></p>
+	    <p>Фамилия: <%=@user.second_name%></p>
+	    <p>Пол: <%=@user.sex%></p>
+	    <p>О себе: <%=@user.about%></p>
+	    <p>icq: <%=@user.icq%></p>
+	    <p>email: <%=@user.email%></p>
+	</div>
+
+</div>

@@ -1,0 +1,43 @@
+<div class="entity">
+    <div class="photo">
+        <% if entity[:photo] != '' %>
+            <img src="/uploads/entities/<%=entity[:id]%>/ent<%=entity[:id]%>_w200.jpg">
+	    <% else %>
+            <img src="/images/no_image.png">
+		<% end %>
+    </div>
+    <div class="meta">
+        <h3 class="title"><%= link_to(h(entity.title), :controller => 'entities', :action => 'view', :id => entity.id) %></h3>
+	    <% if @is_moder -%>
+        <div class="modify">
+            <%= link_to '[ удалить ]', :action => 'del', :id => entity.id %>
+            <%= link_to '[ ред-ть ]', :action => 'edit', :id => entity.id %>
+            <%= link_to '[ просмотр ]', :action => 'view', :id => entity.id %>
+            <% if show_new %>
+            <%= link_to '[ подтвердить ]', :action => 'submit', :id => entity.id %>
+	        <% end %>
+        </div>
+        <% end -%>
+        <h4>Жанр: <%= h entity.get_category %></h4>
+        <% if show_new %>
+          <div class="download"><a href="<%= FILMS_UPLOAD_URL + "/" + entity.file_name.to_s %>">Скачать</a></div>
+        <% else %>
+          <div class="download"><a href="<%= FILMS_STORAGE_URL + "/" + entity.category.to_s + "/" + entity.file_name.to_s %>">Скачать</a></div>
+		<% end %>
+
+		<%= h(entity.description).gsub(/\n/, '<br />') %>
+        <div class="adder">
+        Добавил:
+        <% if entity.user %>
+		<span class="user"><%= link_to(h(entity.user[:uname]), :controller => 'users', :action => 'view', :id => entity.user[:id]) %></span> <%=entity.created_at.to_s(:long) %>
+        <% else %>
+		<span class="user">DELETED</span>
+		<% end %>
+		<br />
+
+		<h4><%= link_to("Комментариев: (#{entity.comments.count.to_s})", :controller => 'entities', :action => 'view', :id => entity[:id]) %></h4>
+		<br>
+        </div>
+    </div>
+</div>
+

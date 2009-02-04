@@ -1,0 +1,19 @@
+<h1>Blog#add</h1>
+<div class="ftp-form">
+  <%= error_messages_for 'post' %>
+  <fieldset>
+    <legend>Введите данные фильма</legend>
+    <% form_for :post do |form| %>
+    <p>
+      <label for="post_title">Название поста:</label>
+      <%= form.text_field :title, :size => 40 %>
+    </p>
+    <p>
+      <label for="post_text">Тело поста:</label>
+      <%= form.text_area :text, :size => 40 %>
+    </p>
+
+    <%= submit_tag "Добавить", :class => "submit" %>
+    <% end %>
+  </fieldset>
+</div>

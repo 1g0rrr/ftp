@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Угиугиуги</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<link href="<?php echo $html->url('/css/default.css')?>" type="text/css" rel="stylesheet">
+<link href="<?php echo $html->url('/css/style.css')?>" type="text/css" rel="stylesheet">
+    <%= stylesheet_link_tag "ftp" %>
+    <%= javascript_include_tag :defaults %>
+
+</head>
+<body>
+
+
+<div id="header" align="center"><br />
+    <h1 align="center" style="display:inline">Фтпфильмоманипулятор</h1><small>alpha</small><br /><br />
+  | <%= link_to 'Хвильмы', :controller => 'entities', :action => 'index' %> |
+    <%= link_to 'Зайти', :controller => 'users', :action => 'login' %> |
+    Регистрация |
+    Блог разработчика |
+    Поиск |
+    <%= link_to 'Пользователи', :controller => 'users', :action => 'index' %> |
+    <h1 align="center"></h1>
+</div>
+<div id="page">
+    <% if(session[:user]) %>
+    <div align="right">
+    Вы зашли как <span class="user"><%= link_to session[:user].uname, :controller => 'users', :action => 'view', :id => session[:user].id %></span>
+    (<%= link_to 'выйти', :controller => 'users', :action => 'logout' %>)
+    </div>
+        <% if flash[:notice] -%>
+            <div id="notice"><%= flash[:notice] %></div>
+        <% end -%>
+        <% if session[:user].perms == 'moder' || session[:user].perms == 'admin' %>
+          <hr>Опции модера: <%= link_to 'непросм. фильмы (5)', :controller => 'entities', :action => 'index' %><hr>
+        <% end %>
+        <% if session[:user].perms == 'admin' %>
+          <hr>Опции админа: <%= link_to 'список юзверей (10)', :controller => 'users', :action => 'index' %><hr>
+        <% end %>
+    <% end %>
+    <div align="left">
+      <% form_for :user, :url => { :controller => 'entities', :action => 'search'} do %>
+            <label for="user_uname">Поиск:</label>
+            <%= text_field_tag :word, params[:word] %>
+            <%= submit_tag "Искать", :class => 'submit' %>
+      <% end %>
+    </div>
+    <%= @content_for_layout %>
+</div>
+    <!-- Добавляем нижний колонтитул для каждой отображаемой страницы -->
+<div id="footer">
+    <br /><br />
+    <p>powered by <b>1g0rrr</b></p>
+</div>
+
+</body>
+</html>

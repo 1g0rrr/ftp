@@ -1,0 +1,10 @@
+vendor/**/*
+doc/*
+tmp/**/*
+public/uploads/**/*
+log/*.log
+.loadpath
+.project
+config/database.yml
+config/deploy.rb
+Capfile

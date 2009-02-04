@@ -1,0 +1,56 @@
+<div class="ftp-form">
+  <%= error_messages_for 'user' %>
+  <fieldset>
+    <legend>Введите данные пользователя</legend>
+    <% form_for :user, :html => { :multipart => true} do |form| %>
+    <p>
+      <label for="user_uname">Ник на сайте:</label>
+      <%= form.text_field :uname, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_password">Пароль:</label>
+      <%= form.password_field :password, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_password_confirmation">Подтверждение пароля:</label>
+      <%= form.password_field :password_confirmation, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_photo">photo:</label>
+      <%= form.file_field :photo, :size => 40 %>
+    </p>	
+
+    <p>
+      <label for="user_real_name">Имя:</label>
+      <%= form.text_field :real_name, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_second_name">Фамилия:</label>
+      <%= form.text_field :second_name, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_sex">Пол:</label>
+      <%= form.text_field :sex, :size => 40 %>
+    </p>
+<!--    <p>
+      <label for="user_about">О себе:</label>
+      <%= form.text_area :about %>
+    </p>
+-->
+    <p>
+      <label for="user_icq">icq:</label>
+      <%= form.text_field :icq, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_email">email:</label>
+      <%= form.text_field :email, :size => 40 %>
+    </p>
+    <p>
+      <label for="user_perms">perms:</label>
+      <%= form.text_field :perms, :size => 40 %>
+    </p>
+
+    <%= submit_tag "Добавить", :class => "submit" %>
+    <% end %>
+  </fieldset>
+</div>

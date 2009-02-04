@@ -1,0 +1,6 @@
+<% 1.upto(1000) do |i| %>
+    user_<%= i %>:
+        id: <%= i %>
+        uname: igor <%= i %>
+        password: ugiugi
+<% end %>

@@ -1,0 +1,19 @@
+<h2>Логин</h2>
+<div class="login_form">
+	<div class="descs">
+		<ul>
+			<li>Ник на сайте</li>
+			<li>Пароль</li>
+		</ul>
+	</div>
+	<div class="fields">
+		<ul>
+		<% form_for :user do %>
+		      <li><%= text_field_tag :uname, params[:uname] %></li>
+		      <li><%= password_field_tag :password, params[:password] %></li>
+		      <li><%= submit_tag "Отправить", :class => 'submit' %></li>
+		<% end %>
+		</ul>
+	</div>
+</div>
+

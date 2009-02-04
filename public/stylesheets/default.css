@@ -1,0 +1,47 @@
+html, body, ul, ol, dl, li, dt, dd, p, h1, h2, h3, h4, h5, h6, table, thead, tbody, tr, td, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background:#FFFFFF none repeat scroll 0%;
+    color: #333;
+    font-family:tahoma,tahoma,verdana,arial,sans-serif;
+    font-size:11px;
+    margin:0px;
+    padding:0px;
+/*    text-align:left;*/
+}
+
+ul {
+    list-style-type: none;
+}
+
+img {
+    border: 0;
+    vertical-align: top;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    vertical-align: top;
+}
+
+input, select, option {
+}
+
+textarea {
+}
+
+a {
+    color: #143a62;
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    font-size: 0;
+}

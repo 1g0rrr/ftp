@@ -1,0 +1,32 @@
+<h2>Добавление фильма</h2>
+<div class="add_film_form">
+  <%= error_messages_for 'ent' %>
+  <div  class="descs">
+	  <ul>
+	  	<li>Название</li>
+		<li>Категория</li>
+		<li>Постер</li>
+		<li>Имя файла</li>
+		<li class="select">Выберите ваш файл</li>
+		<li>Описание фильма</li>
+	  </ul>
+  </div>
+  <div class="fields">
+	  <ul>
+	    <% form_for :ent, :html => { :multipart => true} do |form|  %>
+	      <li><%= form.text_field :title, :size => 40 %></li>
+	      <li><%= form.select :category, Entity::FILMS_CATEGORIES %></li>
+	      <li><%= form.file_field :photo %></li>
+	      <li><% form.text_field :file_name, :size => 40 %></li>
+		  <li class="select"><select single name="ent[file_name]" size=5>
+          <% @uploads.each do |upl| %>
+            <option><%=upl%></option>
+			<% end%>
+          </select></li>
+	  </ul>
+	      <%= form.text_area :description %><br/>
+		  <%= form.hidden_field :user_id, :value =>  session[:user] ? session[:user].id : '' %>
+	      <%= submit_tag "Добавить", :class => "submit" %>
+	    <% end %>
+  </div>
+</div>
