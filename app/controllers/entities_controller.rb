@@ -214,26 +214,6 @@ class EntitiesController < ApplicationController
 #     File.makedirs("#{IMAGES_STORAGE_PATH}/entities/#{params[:id]}")
   end
 
-  # сортировка
-  #TODO Пока не правильно работающие методы с сортировкой.
-  def sort_by_date
-    if session[:entities_sort] == 'created_at DESC'
-      session[:entities_sort] = 'created_at ASC'
-    else
-      session[:entities_sort] = 'created_at DESC'
-    end
-    redirect_to :action => :index
-  end
-  
-  def sort_by_title
-    if session[:entities_sort] == 'title ASC'
-      session[:entities_sort] = 'title DESC'
-    else
-      session[:entities_sort] = 'title ASC'
-    end
-    redirect_to :action => 'index'
-  end
-  
   #Подтвердить фильм
   def submit
     
