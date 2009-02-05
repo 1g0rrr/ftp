@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :uname
   
   attr_accessor :password_confirmation
+  attr_protected :perms
   
   SALT = '1g0rrr'
   

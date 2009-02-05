@@ -55,7 +55,7 @@ class EntitiesController < ApplicationController
     
     # количество фильмов на страницу
     page_size = 3
-    
+
     cur_page = Integer(params[:page])
 
     count_of_ent = Entity.count(:all, :conditions => 'is_submit IS NULL') # количество выводимых сущностей
@@ -106,7 +106,7 @@ class EntitiesController < ApplicationController
       ent = Entity.new(params[:ent])
       
       if ent[:photo] != ''
-      #     Создаем уменьшенную копию присланного изображения
+        # Создаем уменьшенную копию присланного изображения
         thumb = Magick::Image.read(ent[:photo].path).first
         thumb.resize_to_fit!(200, 1000)
         thumb.thumbnail!(1)

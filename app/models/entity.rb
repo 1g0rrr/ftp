@@ -11,6 +11,8 @@ class Entity < ActiveRecord::Base
   validates_uniqueness_of :title
   validates_presence_of :user_id
   validates_numericality_of :user_id
+  
+  attr_protected :is_submit, :karma, :is_transfer
 
   FILMS_CATEGORIES = [['Другая', 'other'], ['Комедия', 'comedy'], ['Ужастик', 'horror'], ['Мультфильм', 'mult']]
 #  @@films_categories = {:none => 'Нету', :comedy => 'Комедия'}
