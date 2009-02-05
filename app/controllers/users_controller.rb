@@ -62,9 +62,8 @@ class UsersController < ApplicationController
   end
   
   def view
-    begin
-      @user = User.find(params[:id])
-    rescue
+    @user = User.find_by_id(params[:id])
+    unless @user
       flash[:notice] = "Такой пользователь не найден"
       redirect_to :controller => 'entities', :action => 'index'
     end
@@ -87,7 +86,7 @@ class UsersController < ApplicationController
       else
         user.delete(:photo)
       end
-      @user = User.find(params[:id])
+      @user = User.find_by_id(params[:id])
       
       if @user.update_attributes(user)
         flash[:notice] = "User #{@user.uname} saved"
@@ -99,7 +98,7 @@ class UsersController < ApplicationController
 
     else
       begin
-        @user = User.find(params[:id])
+        @user = User.find_by_id(params[:id])
         @user.password = ''
         @user.photo = ''
       rescue
@@ -110,7 +109,7 @@ class UsersController < ApplicationController
   end
   
   def del
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
     @user.destroy
     
     flash[:notice] = "Удаление выполнено"

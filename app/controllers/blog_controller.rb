@@ -14,15 +14,15 @@ class BlogController < ApplicationController
     if (page == 0) then page = count_of_pages end
 
     @posts = DevBlogPost.find(:all,
-                            :conditions => "",
-                            :order => "created_at DESC",
-                            :offset => (count_of_pages - page) * page_size,
-                            :limit => page_size)
+                              :conditions => "",
+                              :order => "created_at DESC",
+                              :offset => (count_of_pages - page) * page_size,
+                              :limit => page_size)
 
   end
 
   def view
-    @post = DevBlogPost.find(params[:id])
+    @post = DevBlogPost.find_by_id(params[:id])
   end
 
   def edit

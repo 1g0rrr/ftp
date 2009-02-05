@@ -170,7 +170,7 @@ class EntitiesController < ApplicationController
         ent.delete(:photo)
       end
       
-      @ent = Entity.find(params[:id])
+      @ent = Entity.find_by_id(params[:id])
       # И сохраняем ее по соответствующему пути, который содержит id нашей Entity
       if @ent.update_attributes(ent)
         flash[:notice] = "Фильм \"#{ent[:title]}\" успешно изменен"
@@ -179,7 +179,7 @@ class EntitiesController < ApplicationController
         flash[:notice] = "Not created"
       end
     else
-      @ent = Entity.find(params[:id])
+      @ent = Entity.find_by_id(params[:id])
       @ent.photo = ''
     end  
   end
@@ -187,7 +187,7 @@ class EntitiesController < ApplicationController
   # удаление
   def del
     
-    @ent = Entity.find(params[:id])
+    @ent = Entity.find_by_id(params[:id])
     @ent.update_attributes(:is_transfer => -1)
     
     flash[:notice] = "Удаление выполнено"
@@ -237,7 +237,7 @@ class EntitiesController < ApplicationController
   #Подтвердить фильм
   def submit
     
-    ent = Entity.find(params[:id])
+    ent = Entity.find_by_id(params[:id])
     ent.is_submit = 1
     ent.save
     flash[:notice] = "Успешно подтверждено, фильм будет виден, когда система его перенесёт в общее хранилище."
