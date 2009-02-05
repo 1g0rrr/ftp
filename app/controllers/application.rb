@@ -18,11 +18,12 @@ class ApplicationController < ActionController::Base
 #  private
 
   def prepeare_menu
-    @count_of_new_ent = Entity.find(:all, :conditions => "is_submit is NULL").size
-    @count_of_users = User.find(:all).size
-    @count_of_ent = Entity.find(:all, :conditions => "is_submit = 1 AND is_transfer = 1").size
+    @count_of_new_ent = Entity.count(:all, :conditions => "is_submit is NULL")
+    @count_of_users = User.count(:all)
+    @count_of_ent = Entity.count(:all, :conditions => ["is_submit = ? AND is_transfer = ?", 1, 1])
   end
 
+  # Эти переменные используются во view
   def prepeare_users
     if session[:user] && User.find_by_id(session[:user].id)
       @is_user = true

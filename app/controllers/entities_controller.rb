@@ -1,15 +1,12 @@
-# автор 1g0rrr
-
 class EntitiesController < ApplicationController
   
-#  require 'RMagick'
   require "ftools"
-#  include Magick
   
   layout "main"
   
-#  before_filter :kick_not_moder, :except => 'index'
-  # список всех фильмов
+  before_filter :kick_not_user, :only => [:add, :add_comment]
+  before_filter :kick_not_moder, :only => [:show_new, :edit, :del, :submit]
+
   def index
     
     # количество фильмов на страницу
@@ -97,14 +94,13 @@ class EntitiesController < ApplicationController
     word = params[:word]
     @entities = Entity.find(:all,
                             :conditions => ['title like ? and is_submit = ? and is_transfer = ?', '%' + word + '%', 1, 1],
-    :order => 'title ASC',
-    :limit => page_size)
+                            :order => 'title ASC',
+                            :limit => page_size)
   end
   
   # добавление фильма
   def add
-    return if kick_not_user
-    
+
     if request.post?
       @params = params
       ent = Entity.new(params[:ent])
@@ -147,13 +143,15 @@ class EntitiesController < ApplicationController
   
   # просмотр одного фильма
   def view
-    @ent = Entity.find(params[:id])
+    @ent = Entity.find_by_id(params[:id])
+    unless @ent
+      flash[:notice] = "Данного фильма не существует"
+      redirect_to :controller => 'entities', :action => 'index'
+    end
   end
   
   # редактирование фильма
   def edit
-    kick_not_moder
-    
     if request.post?
       ent = params[:ent]
       
@@ -189,8 +187,6 @@ class EntitiesController < ApplicationController
   # удаление
   def del
     
-    return if kick_not_moder
-    
     @ent = Entity.find(params[:id])
     @ent.update_attributes(:is_transfer => -1)
     
@@ -209,7 +205,7 @@ class EntitiesController < ApplicationController
   
   # Перенос файлов на длительное хранение на другие винты
   def transfer
-    @entities = Entity.find(:all, :conditions => "is_transfer = 1")
+    @entities = Entity.find(:all, :conditions => ["is_transfer = ?", 1])
     redirect_to :action => "index"
 #    while true do
       sleep(10*60)
@@ -219,6 +215,7 @@ class EntitiesController < ApplicationController
   end
 
   # сортировка
+  #TODO Пока не правильно работающие методы с сортировкой.
   def sort_by_date
     if session[:entities_sort] == 'created_at DESC'
       session[:entities_sort] = 'created_at ASC'
@@ -237,13 +234,13 @@ class EntitiesController < ApplicationController
     redirect_to :action => 'index'
   end
   
+  #Подтвердить фильм
   def submit
-    return if kick_not_moder
     
     ent = Entity.find(params[:id])
     ent.is_submit = 1
     ent.save
-    flash[:notice] = "Успешно подтверждено"
+    flash[:notice] = "Успешно подтверждено, фильм будет виден, когда система его перенесёт в общее хранилище."
     redirect_to :controller => :entities, :action => :show_new
   end
   

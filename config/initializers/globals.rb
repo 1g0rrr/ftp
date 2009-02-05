@@ -2,8 +2,6 @@
 IMAGES_STORAGE_PATH = "#{RAILS_ROOT}/public/uploads"
 
 
-
-
 # папка upload, в которую пользователи загружают фильмы
 FILMS_UPLOAD_PATH = "/home/igorrr/upload"
 

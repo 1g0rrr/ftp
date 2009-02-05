@@ -37,8 +37,6 @@ class UsersController < ApplicationController
     # dnext_page - предыдущая через одну страница
     # dprew_page - следующая через одну страница
     
-#    breakpoint
-    
     if count_of_pages > 1 then # нужна ли вообще навигация
       if cur_page > 2 then @dprev_page = cur_page - 2 end
       if cur_page > 1 then @prev_page = cur_page - 1 end
