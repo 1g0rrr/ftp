@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   before_filter :kick_not_user, :except => [:login, :register]
-  before_filter :kick_not_moder, :except => [:view, :login, :register, :edit, :logout, :add]
+  before_filter :kick_not_moder, :except => [:view, :login, :register, :edit, :logout]
   before_filter :kick_not_owner, :only => [:edit]
+
   
   
   layout "main"

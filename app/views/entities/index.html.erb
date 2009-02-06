@@ -7,19 +7,21 @@
 </div>
 <br>
 
-<%= show_entities @entities %>
+<%= show_entities @entities2 %>
 
-<% if @entities.empty? %>
+<% if @entities2.empty? %>
   <h1>Тут пока пусто.</h1> <h2> Зарегистрируйтесь и добавьте новый фильм.</h2>
 <% end %>
 
 <!-- Постраничная навигация -->
 <div class="navigator">
-  <%= @next_page ? link_to('|&larr;', :action => 'index') : '' %>
+  <%= nil ? link_to('|&larr;', :action => 'index') : '' %>
   <%= @dnext_page ? link_to(@dnext_page, :action => 'index', :page => @dnext_page) : '' %>
   <%= @next_page ? link_to(@next_page, :action => 'index', :page => @next_page) : '' %>
   <%= @cur_page %>
   <%= @prev_page ? link_to(@prev_page, :action => 'index', :page => @prev_page) : '' %>
   <%= @dprev_page ? link_to(@dprev_page, :action => 'index', :page => @dprev_page) : '' %>
   <%= @prev_page ? link_to('&rarr;|', :action => 'index', :page => 1) : '' %>
+  <%= will_paginate @entities2, :prev_label => '&larr;', :next_label => '&rarr;', :separator => ' ' %>
 </div>
+

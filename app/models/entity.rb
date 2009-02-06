@@ -29,5 +29,5 @@ class Entity < ActiveRecord::Base
     end
     return 'Другая'    
   end
-  
+
 end

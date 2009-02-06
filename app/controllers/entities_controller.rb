@@ -8,31 +8,12 @@ class EntitiesController < ApplicationController
   before_filter :kick_not_moder, :only => [:show_new, :edit, :del, :submit]
 
   def index
+
     
-    # количество фильмов на страницу
-    page_size = 3
-    
-    cur_page = Integer(params[:page])
+    @entities2 = Entity.paginate(:page => params[:page],
+                                 :conditions => ['is_submit = ? AND is_transfer = ?', 1, 1],
+                                 :per_page => 3)
 
-    count_of_ent = Entity.count(:all, :conditions => ['is_submit = ? AND is_transfer = ?', 1, 1]) # количество выводимых сущностей
-    count_of_pages = (count_of_ent.to_f / page_size).ceil # считаем количество страниц вывода
-
-
-    # если страница не передана, то просматриваем последнюю
-    if (cur_page == 0) then cur_page = count_of_pages end
-
-    if (cur_page > count_of_pages)
-      flash[:notice] = "Такой страницы не существует"
-      @entities = ''
-      return false
-    end
-    
-    @entities = Entity.find(:all,
-                            :conditions => ['is_submit = ? AND is_transfer = ?', 1, 1],
-                            :order => session[:entities_sort],
-                            :offset => (count_of_pages - cur_page) * page_size,
-                            :limit => page_size)
-                            
                             
     # cur_page - страница которую пользователь запрашивает и на которую хочет перейти
     # next_page - следующай страница (большая по счету)
@@ -40,14 +21,15 @@ class EntitiesController < ApplicationController
     # dnext_page - предыдущая через одну страница
     # dprew_page - следующая через одну страница
     
-    if count_of_pages > 1 then # нужна ли вообще навигация
-      if cur_page > 2 then @dprev_page = cur_page - 2 end
-      if cur_page > 1 then @prev_page = cur_page - 1 end
-      @cur_page = cur_page
-      if count_of_pages >= (cur_page + 1) then @next_page = cur_page + 1 end
-      if count_of_pages >= (cur_page + 2) then @dnext_page = cur_page + 2 end
-    end
+#    if count_of_pages > 1 then # нужна ли вообще навигация
+#      if cur_page > 2 then @dprev_page = cur_page - 2 end
+#      if cur_page > 1 then @prev_page = cur_page - 1 end
+#      @cur_page = cur_page
+#      if count_of_pages >= (cur_page + 1) then @next_page = cur_page + 1 end
+#      if count_of_pages >= (cur_page + 2) then @dnext_page = cur_page + 2 end
+#    end
     
+   
   end
   
   # просмотр неподтвержденных фильмов
